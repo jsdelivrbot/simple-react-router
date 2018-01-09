@@ -18,7 +18,7 @@ export default class App extends Component {
   render() {
     return (
       <div style={{marginLeft: '20px'}}>
-      	<h1 style={{marginTop: '30px'}}>My awesome app</h1>
+      	<h1 style={{marginTop: '30px'}}>My awesome app with routing</h1>
 
       	<button onClick={this.onClickAddOne.bind(this)} style={{marginBottom: '10px'}}>Add One</button>
 
