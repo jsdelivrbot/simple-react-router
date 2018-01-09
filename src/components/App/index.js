@@ -20,7 +20,7 @@ export default class App extends Component {
       <div style={{marginLeft: '20px'}}>
       	<h1 style={{marginTop: '30px'}}>My awesome app with routing</h1>
 
-      	<button onClick={this.onClickAddOne.bind(this)} style={{marginBottom: '10px'}}>Add One</button>
+      	{/*<button onClick={this.onClickAddOne.bind(this)} style={{marginBottom: '10px'}}>Add One</button>
 
 
         <UserInput placeholder="Input Box 1" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value})} style={{display: 'block'}} />
@@ -29,7 +29,7 @@ export default class App extends Component {
         <h1 style={{marginTop: '200px'}}>What's in the state?</h1>
         <h2>Current Count: <span style={{color: 'red'}}>{this.state.count}</span></h2>
         <h2>Input Box 1: <span style={{color: 'red'}}>{this.state.value}</span></h2>
-
+        */}
 
 
       </div>
