@@ -8,7 +8,7 @@ Interested in learning [React](https://www.udemy.com/react-redux/)?
 
 
 ```
-> git clone git@github.com:mcrice123/simple-react-example.git
+> git clone https://github.com/mcrice123/simple-react-router.git
 > cd simple-react-router
 > npm install
 > npm start
