@@ -48,21 +48,23 @@ export default class App extends Component {
     return (
       <div style={{marginLeft: '20px'}}>
       	<h1 style={{marginTop: '30px'}}>My awesome app with routing</h1>
-        <Navbar />
-        <hr />
+        <Router>
+          <div>
+            <Navbar />
+            <hr />
 
-      	<Router>
-          <Switch> 
-            <Route exact path="/" render={() => (
-              <Start colors={this.state.colors} onClick={this.onColorClick} />
-            )} />
-            <Route path="/middle" render={() => (
-              <Middle input={this.state.input} onChange={this.onInputChange} onSubmit={this.onSubmit} />
-            )} />
-            <Route path="/end" render={() => (
-              <End object={this.state.newObject} />
-            )} /> 
-          </Switch>
+            <Switch> 
+              <Route exact path="/" render={() => (
+                <Start colors={this.state.colors} onClick={this.onColorClick} />
+              )} />
+              <Route path="/middle" render={() => (
+                <Middle input={this.state.input} onChange={this.onInputChange} onSubmit={this.onSubmit} />
+              )} />
+              <Route path="/end" render={() => (
+                <End object={this.state.newObject} />
+              )} /> 
+            </Switch>
+          </div>
         </Router>
       </div>
     );
