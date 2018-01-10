@@ -1,37 +1,69 @@
 import React, { Component } from 'react';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 
-import UserInput from '../common/UserInput';
+import Navbar from '../Navbar';
+import Start from '../Start';
+import Middle from '../Middle';
+import End from '../End';
 
 export default class App extends Component {
   constructor() {
   	super();
 
-  	this.state = { count: 0 };
+  	this.state = { 
+      colors: [ 
+        { id: 1, value: 'Red', hex: '#ff0000' }, 
+        { id: 2, value: 'Yellow', hex: '#ffff00' }, 
+        { id: 3, value: 'Blue', hex: '#0000ff' } 
+      ],
+      input: '',
+      selectedColor: '',
+      newObject: null
+    };
+
+    this.onColorClick = this.onColorClick.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onClickAddOne() {
-  	console.log("clicked");
-  	const new_count = this.state.count + 1;
-  	this.setState({ count: new_count });
+  onColorClick(color) {
+    console.log("color: ", color);
+    this.setState({ selectedColor: color });
+  }
+
+  onInputChange(event) {
+    console.log("event.target.value: ", event.target.value);
+    this.setState({ input: event.target.value });
+  }
+
+  onSubmit() {
+    this.setState({ newObject: { input: this.state.input, color: this.state.selectedColor } });
   }
 
   render() {
     return (
       <div style={{marginLeft: '20px'}}>
       	<h1 style={{marginTop: '30px'}}>My awesome app with routing</h1>
+        <Navbar />
+        <hr />
 
-      	{/*<button onClick={this.onClickAddOne.bind(this)} style={{marginBottom: '10px'}}>Add One</button>
-
-
-        <UserInput placeholder="Input Box 1" value={this.state.value} onChange={(e) => this.setState({ value: e.target.value})} style={{display: 'block'}} />
-
-
-        <h1 style={{marginTop: '200px'}}>What's in the state?</h1>
-        <h2>Current Count: <span style={{color: 'red'}}>{this.state.count}</span></h2>
-        <h2>Input Box 1: <span style={{color: 'red'}}>{this.state.value}</span></h2>
-        */}
-
-
+      	<Router>
+          <Switch> 
+            <Route exact path="/" render={() => (
+              <Start colors={this.state.colors} onClick={this.onColorClick} />
+            )} />
+            <Route path="/middle" render={() => (
+              <Middle input={this.state.input} onChange={this.onInputChange} onSubmit={this.onSubmit} />
+            )} />
+            <Route path="/end" render={() => (
+              <End object={this.state.newObject} />
+            )} /> 
+          </Switch>
+        </Router>
       </div>
     );
   }
